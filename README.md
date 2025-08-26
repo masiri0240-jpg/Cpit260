@@ -1,72 +1,64 @@
 # 💻 Shell Command Interface
 
-## Introduction
-The Shell Command Interface is a Java-based project that replicates the functionality of a Unix-like shell, designed to work on both Windows and Unix systems. Built with Java Swing, it combines a graphical interface with command-line power, supporting 20+ commands (e.g., `ls`, `cd`, `grep`, `chmod`, `wget`).
-
-It includes features like auto-completion, command history navigation, and syntax highlighting, making it both user-friendly and powerful.
-
-This project was developed as part of the **CPIT260 Final Lab Project** at King Abdulaziz University, FCIT.
+## 📖 Introduction
+The Shell Command Interface is a Java-based project that mimics the functionality of a Unix-like shell while working seamlessly on both Windows and Unix systems.  
+It supports 20+ commands, integrates syntax highlighting, auto-completion, and a GUI (Swing) for user-friendly interaction.  
+Developed as part of the **CPIT260 Final Lab Project** at King Abdulaziz University, FCIT.
 
 ---
 
-## 📌 Features
+## ✨ Features
 
 ### ✅ 20+ Supported Commands
-
-- **File operations:** `ls`, `pwd`, `mkdir`, `cd`, `cp`, `mv`, `rm`, `rmdir`, `touch`
+- **File management:** `ls`, `pwd`, `mkdir`, `cd`, `cp`, `mv`, `rm`, `rmdir`, `touch`
 - **File viewing:** `cat`, `less`, `head`
-- **Search tools:** `grep`, `find`, `locate`
+- **Search:** `grep`, `find`, `locate`
 - **System info:** `ps`, `du`, `wc`
 - **Permissions:** `chmod`, `chown`, `chgrp`, `accessrights`
-- **User/Group management:** `addUser`, `addGroup`
+- **User management:** `addUser`, `addGroup`
 - **Networking:** `wget`
 - **Utilities:** `history`, `clear`
 
-### 🎨 Syntax Highlighting
-- Blue for commands, red for errors
-
-### ⌨️ Auto-completion
-- Use `Ctrl+Space`
-
-### 🔼🔽 Command History Navigation
-
-### 🌍 Cross-Platform Support
-- Windows + Unix
-
-### ⚡ Error Handling
-- For invalid commands and permissions
+- 🎨 **Syntax Highlighting** → Commands (blue), Errors (red)
+- ⌨️ **Auto-completion** (`Ctrl+Space`)
+- 🔼🔽 **Command history navigation**
+- 🌍 **Cross-platform** → Works on Windows + Unix
+- ⚡ **Error handling** → Invalid commands, I/O issues, permissions
 
 ---
 
 ## 🏗️ Project Structure
 
-- `BookingSystem.java` → Main controller & dispatcher
-- **Command Handlers** → Methods for each command (`handleLsCommand`, `handleGrepCommand`, etc.)
-- **GUI (Swing)** → Provides output area, command input, and dropdown
+- `EnhancedShellUI.java` → Swing GUI (main window, input/output pane, dropdown)
+- **Command Dispatcher** → Routes commands (`executeSystemCommand`)
+- **Command Handlers** → Implement functionality for each command
+- **ProcessBuilder Integration** → Executes commands in current directory
 
 ---
 
 ## 🖥️ GUI Components
 
-- **Command Dropdown** → Preloaded with supported commands for quick access
-- **Arguments Field** → Enter parameters for commands
-- **Execute Button** → Runs the selected command
-- **Output Pane** → Displays command results with color-coded syntax
-- **Current Directory Label** → Shows the active directory path
+- **Command Dropdown** → Choose from supported commands
+- **Arguments Field** → Enter parameters
+- **Execute Button** → Run the command
+- **Output Pane** → Displays results with syntax highlighting
+- **Current Directory Label** → Shows active path
 
 ---
 
 ## ⚙️ Installation
 
+Clone this repository:
 ```sh
-# Clone the repository:
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/your-username/ShellCommandInterface.git
 cd ShellCommandInterface
-
-# Compile the Java files:
+```
+Compile the project:
+```sh
 javac *.java
-
-# Run the application:
+```
+Run the shell:
+```sh
 java EnhancedShellUI
 ```
 
@@ -74,11 +66,11 @@ java EnhancedShellUI
 
 ## 🚀 Usage
 
-1. Type or select a command from the dropdown.
+1. Select a command from the dropdown (or type it in).
 2. Add arguments (e.g., `grep "hello" file.txt`).
-3. Press Enter or click Execute.
-4. Use `Ctrl+Space` for auto-completion.
-5. Use ↑ / ↓ keys to scroll through command history.
+3. Press Execute or hit Enter.
+4. Use `Ctrl+Space` → auto-completion.
+5. Use ↑ / ↓ → scroll through command history.
 
 ---
 
@@ -87,14 +79,13 @@ java EnhancedShellUI
 ```
 ls
 pwd
-mkdir testdir
-cd testdir
-touch file.txt
-echo "Hello World" > file.txt
-cat file.txt
-grep "Hello" file.txt
-wc file.txt
-chmod 755 file.txt
+mkdir projects
+cd projects
+touch notes.txt
+cat notes.txt
+grep "hello" notes.txt
+wc notes.txt
+chmod 755 notes.txt
 wget https://example.com/file.zip
 history
 clear
@@ -109,27 +100,28 @@ clear
 C:\Users\student\ShellProject
 
 > ls
-Documents/  Downloads/  testdir/
+Documents/  Downloads/  projects/
 
-> grep "Hello" file.txt
-Hello World
+> grep "hello" notes.txt
+hello world
 
 > history
 1. pwd
 2. ls
-3. grep "Hello" file.txt
+3. grep "hello" notes.txt
 ```
 
 ---
 
 ## ❗ Troubleshooting
 
-- **Permission Denied** → Some commands (`chown`, `chgrp`, `addUser`, `addGroup`) require Admin privileges.
-- **Unsupported Command** → Displays "Command not supported".
-- **Windows vs Unix differences** → The system adapts with equivalent commands (e.g., `dir` for `ls`).
+- **Admin Privileges Required** → Some commands (`chown`, `chgrp`, `addUser`, `addGroup`) may require elevated rights.
+- **Windows vs Unix Differences** → Uses equivalent commands (`dir` for `ls`, PowerShell `Invoke-WebRequest` for `wget`).
+- **Unsupported Command** → Displays:  
+  `Command not supported`
 
 ---
 
 ## 📜 License
 
-This project is intended for educational purposes only.
+This project is for educational purposes only.
